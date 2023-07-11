@@ -1,0 +1,8 @@
+#override NIGLOBAL=;nx;
+#override NJGLOBAL=;ny;
+#override DAYMAX=;daymax;
+#override USE_HOR_VISC_PYTHON=;use_hor_visc_python;
+
+! Note if the resolution gets too high, these might need to be adjusted
+#override DT=900.
+#override DT_THERM=1200.
