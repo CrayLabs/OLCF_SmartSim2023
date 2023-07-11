@@ -1,18 +1,19 @@
-from smartsim import Experiment
+
 import glob
 import itertools
-from helpers import parse_mom6_out
 import logging
-import time
-import pandas as pd
 import shutil
+import time
+
+import pandas as pd
+from smartsim import Experiment
+
+from helpers import parse_mom6_out
 
 SCRATCH_ROOT='/ccs/home/ashao/scratch/m2lines/'
 NUM_NODES = 1
 NUM_GPUS = 8
 ML_INPUTS = "./ml_inputs"
-
-
 
 logging.basicConfig(
     format='%(asctime)s %(message)s',
@@ -24,7 +25,7 @@ def main():
 
     db_cpus = [24]
     mom6_cpus = [30]
-    refines = [3] #Refinement relative to 1/4-degree, e.g. '3' refers to a 1/12-degree model
+    refines = [3]  # Refinement relative to 1/4-degree, e.g. '3' refers to a 1/12-degree model
 
     combinations = itertools.product(db_cpus, mom6_cpus, refines)
 
@@ -44,7 +45,7 @@ def main():
         srun.set_tasks(mom6_cpu*NUM_NODES)
         srun.set_tasks_per_node(mom6_cpu)
 
-#        srun.set('cpu-bind',f'map_cpu:{cpu_list}')
+        # srun.set('cpu-bind',f'map_cpu:{cpu_list}')
 
         # start MOM6
         model = exp.create_model("MOM6_run", srun)
@@ -74,9 +75,9 @@ def main():
                 script_path=f'{ML_INPUTS}/testNN_trace.txt'
                 )
 
-        files = glob.glob(f'./basecase/')
-        files.append(f'./basecase/INPUT')
-        files.append(f'./basecase/RESTART')
+        files = glob.glob('./basecase/')
+        files.append('./basecase/INPUT')
+        files.append('./basecase/RESTART')
         model.attach_generator_files(to_copy=files, to_configure='./MOM_override')
         exp.generate(model, overwrite=True)
 

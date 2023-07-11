@@ -18,7 +18,7 @@ proc ModulesHelp { } {
 
 depends-on rocm/4.5.2 PrgEnv-gnu/8.3.3 gcc/11.2.0 amd-mixed
 
-module use /lustre/orion/gen150/scratch/drozt/repos/packaging/spack/share/spack/modules/linux-sles15-zen3/
+module use /lustre/orion/gen150/world-shared/smartsim-2023/spack/share/spack/modules/linux-sles15-zen3
 
 module load py-coloredlogs-14.0-gcc-11.2.0-6ayxhfy
 module load py-filelock-3.12.0-gcc-11.2.0-y6nhx7y
@@ -27,10 +27,11 @@ module load py-psutil-5.9.4-gcc-11.2.0-zcngvnb
 module load py-redis-4.5.1-gcc-11.2.0-fjrhnbu
 module load py-smartredis-0.4.1-gcc-11.2.0-eh4nliw
 module load py-tabulate-0.8.9-gcc-11.2.0-t3szszw
-module load py-torch-1.11.0-gcc-11.2.0-fjypvvu
+module load py-torch-1.11.0.precompiled-gcc-11.2.0-wphne64
 module load py-tqdm-4.65.0-gcc-11.2.0-2mzhsxm
 module load python-3.10.10-gcc-11.2.0-np2vsjs
 module load redis-7.0.5-gcc-11.2.0-urtc2wf
+# module load redis-ai-1.2.7-gcc-11.2.0-iz3k2x7 # Probably not needed since we symlink in SmartSim
 
 module load py-astunparse-1.6.3-gcc-11.2.0-hlkoxan
 module load py-filelock-3.12.0-gcc-11.2.0-y6nhx7y
@@ -43,37 +44,22 @@ module load py-requests-2.28.2-gcc-11.2.0-bux5bdl
 module load py-setuptools-63.4.3-gcc-11.2.0-sfyegrw
 module load py-pytest-7.2.1-gcc-11.2.0-yzps3np
 
-#module load redis-ai-1.2.7-gcc-11.2.0-y3xyz52
-
-prepend-path --delim ":" PATH "/lustre/orion/gen150/scratch/drozt/repos/packaging/spack/opt/spack/linux-sles15-zen3/gcc-11.2.0/py-smartsim-0.5.0-pwp6ije2emqo67si44clifxiuvhhjuvy/bin"
-prepend-path --delim ":" CMAKE_PREFIX_PATH "/lustre/orion/gen150/scratch/drozt/repos/packaging/spack/opt/spack/linux-sles15-zen3/gcc-11.2.0/py-smartsim-0.5.0-pwp6ije2emqo67si44clifxiuvhhjuvy/."
-prepend-path --delim ":" PYTHONPATH "/lustre/orion/gen150/scratch/drozt/repos/packaging/spack/opt/spack/linux-sles15-zen3/gcc-11.2.0/py-smartsim-0.5.0-pwp6ije2emqo67si44clifxiuvhhjuvy/lib/python3.10/site-packages"
-prepend-path --delim ":" PYTHONPATH "/lustre/orion/gen150/scratch/drozt/repos/packaging/spack/opt/spack/linux-sles15-zen3/gcc-11.2.0/py-coloredlogs-14.0-6ayxhfyrdmsz4tbz3mj5kqte4vl4qhlz/lib/python3.10/site-packages"
-prepend-path --delim ":" PYTHONPATH "/lustre/orion/gen150/scratch/drozt/repos/packaging/spack/opt/spack/linux-sles15-zen3/gcc-11.2.0/py-humanfriendly-8.2-fwxoic6njz7wkzysol5hyimvyvresthu/lib/python3.10/site-packages"
-prepend-path --delim ":" PYTHONPATH "/lustre/orion/gen150/scratch/drozt/repos/packaging/spack/opt/spack/linux-sles15-zen3/gcc-11.2.0/py-filelock-3.12.0-y6nhx7ytgbva47ljxl2e7fkhglaqapmv/lib/python3.10/site-packages"
-prepend-path --delim ":" PYTHONPATH "/lustre/orion/gen150/scratch/drozt/repos/packaging/spack/opt/spack/linux-sles15-zen3/gcc-11.2.0/py-protobuf-3.20.3-pt4gmnlmxlu2r7dmmj4mqb2tkx2gqkoa/lib/python3.10/site-packages"
-prepend-path --delim ":" PYTHONPATH "/lustre/orion/gen150/scratch/drozt/repos/packaging/spack/opt/spack/linux-sles15-zen3/gcc-11.2.0/py-setuptools-63.4.3-sfyegrwmnoobceynrw2jsevubqvchqvy/lib/python3.10/site-packages"
-prepend-path --delim ":" PYTHONPATH "/lustre/orion/gen150/scratch/drozt/repos/packaging/spack/opt/spack/linux-sles15-zen3/gcc-11.2.0/py-psutil-5.9.4-zcngvnbbubhgx3pivrpzetmxakvdnzke/lib/python3.10/site-packages"
-prepend-path --delim ":" PYTHONPATH "/lustre/orion/gen150/scratch/drozt/repos/packaging/spack/opt/spack/linux-sles15-zen3/gcc-11.2.0/py-redis-4.5.1-fjrhnbuba2urgmvzhdlibxtqyccu36w6/lib/python3.10/site-packages"
-prepend-path --delim ":" PYTHONPATH "/lustre/orion/gen150/scratch/drozt/repos/packaging/spack/opt/spack/linux-sles15-zen3/gcc-11.2.0/py-async-timeout-4.0.2-q5ozh7d6pbgwuj7xptsod2cx7ww5n44h/lib/python3.10/site-packages"
-prepend-path --delim ":" PYTHONPATH "/lustre/orion/gen150/scratch/drozt/repos/packaging/spack/opt/spack/linux-sles15-zen3/gcc-11.2.0/py-smartredis-0.4.1-eh4nliwstk6fhan5rxexnjnbwc4vufzf/lib/python3.10/site-packages"
-prepend-path --delim ":" PYTHONPATH "/lustre/orion/gen150/scratch/drozt/repos/packaging/spack/opt/spack/linux-sles15-zen3/gcc-11.2.0/py-numpy-1.24.3-lyu7lwwrxifmqjw66wjg222ts4tbdjnj/lib/python3.10/site-packages"
-prepend-path --delim ":" PYTHONPATH "/lustre/orion/gen150/scratch/drozt/repos/packaging/spack/opt/spack/linux-sles15-zen3/gcc-11.2.0/py-tabulate-0.8.9-t3szszww3fxrnw7wmtxeh6zjr7ew75wd/lib/python3.10/site-packages"
-prepend-path --delim ":" PYTHONPATH "/lustre/orion/gen150/scratch/drozt/playground/torch-1.11-install/lib/python3.10/site-packages"
-prepend-path --delim ":" PYTHONPATH "/lustre/orion/gen150/scratch/drozt/repos/packaging/spack/opt/spack/linux-sles15-zen3/gcc-11.2.0/py-tqdm-4.65.0-2mzhsxmedrw7borsrc24kmlnwzbpblql/lib/python3.10/site-packages"
-prepend-path --delim ":" XLOCALEDIR "/lustre/orion/gen150/scratch/drozt/repos/packaging/spack/opt/spack/linux-sles15-zen3/gcc-11.2.0/libx11-1.8.4-iytjgvejn7y5cvzxdukadg7xfd2nirxd/share/X11/locale"
-setenv ROCM_PATH "/lustre/orion/gen150/scratch/drozt/repos/packaging/spack/opt/spack/linux-sles15-zen3/gcc-11.2.0/hip-5.4.3-eaol3ohajnozwtms667g54fotlrnrf6n"
-setenv HIPIFY_CLANG_PATH "/lustre/orion/gen150/scratch/drozt/repos/packaging/spack/opt/spack/linux-sles15-zen3/gcc-11.2.0/hipify-clang-5.4.3-zjfkolxw64jibxehgkfyf4br6yxkmdbg"
-setenv HIP_PLATFORM "amd"
-setenv HIP_COMPILER "clang"
-setenv HIP_CLANG_PATH "/lustre/orion/gen150/scratch/drozt/repos/packaging/spack/opt/spack/linux-sles15-zen3/gcc-11.2.0/llvm-amdgpu-5.4.3-2ziocxvgsbjsnxrnf6s2375mwpkb535z/bin"
-setenv HSA_PATH "/lustre/orion/gen150/scratch/drozt/repos/packaging/spack/opt/spack/linux-sles15-zen3/gcc-11.2.0/hsa-rocr-dev-5.4.3-4kfkhcf7kjvbn5jqwzdcgx5fdm46j2sj"
-setenv ROCMINFO_PATH "/lustre/orion/gen150/scratch/drozt/repos/packaging/spack/opt/spack/linux-sles15-zen3/gcc-11.2.0/rocminfo-5.4.3-362yc2qca3ldcsyuyyw36a7fd4d6uhz7"
-setenv DEVICE_LIB_PATH "/lustre/orion/gen150/scratch/drozt/repos/packaging/spack/opt/spack/linux-sles15-zen3/gcc-11.2.0/llvm-amdgpu-5.4.3-2ziocxvgsbjsnxrnf6s2375mwpkb535z/amdgcn/bitcode"
-setenv HIP_DEVICE_LIB_PATH "/lustre/orion/gen150/scratch/drozt/repos/packaging/spack/opt/spack/linux-sles15-zen3/gcc-11.2.0/llvm-amdgpu-5.4.3-2ziocxvgsbjsnxrnf6s2375mwpkb535z/amdgcn/bitcode"
-setenv HIP_PATH "/lustre/orion/gen150/scratch/drozt/repos/packaging/spack/opt/spack/linux-sles15-zen3/gcc-11.2.0/hip-5.4.3-eaol3ohajnozwtms667g54fotlrnrf6n"
-setenv LLVM_PATH "/lustre/orion/gen150/scratch/drozt/repos/packaging/spack/opt/spack/linux-sles15-zen3/gcc-11.2.0/llvm-amdgpu-5.4.3-2ziocxvgsbjsnxrnf6s2375mwpkb535z"
-append-path --delim " " HIPCC_COMPILE_FLAGS_APPEND "--rocm-path=/lustre/orion/gen150/scratch/drozt/repos/packaging/spack/opt/spack/linux-sles15-zen3/gcc-11.2.0/hip-5.4.3-eaol3ohajnozwtms667g54fotlrnrf6n"
+prepend-path --delim ":" PATH "/lustre/orion/gen150/world-shared/smartsim-2023/spack/opt/spack/linux-sles15-zen3/gcc-11.2.0/py-smartsim-0.5.0-z4d65zsms4txdskw5el2hk5biyyvee7d/bin"
+prepend-path --delim ":" CMAKE_PREFIX_PATH "/lustre/orion/gen150/world-shared/smartsim-2023/spack/opt/spack/linux-sles15-zen3/gcc-11.2.0/py-smartsim-0.5.0-z4d65zsms4txdskw5el2hk5biyyvee7d/."
+prepend-path --delim ":" PYTHONPATH "/lustre/orion/gen150/world-shared/smartsim-2023/spack/opt/spack/linux-sles15-zen3/gcc-11.2.0/py-smartsim-0.5.0-z4d65zsms4txdskw5el2hk5biyyvee7d/lib/python3.10/site-packages"
+prepend-path --delim ":" PYTHONPATH "/lustre/orion/gen150/world-shared/smartsim-2023/spack/opt/spack/linux-sles15-zen3/gcc-11.2.0/py-coloredlogs-14.0-6ayxhfyrdmsz4tbz3mj5kqte4vl4qhlz/lib/python3.10/site-packages"
+prepend-path --delim ":" PYTHONPATH "/lustre/orion/gen150/world-shared/smartsim-2023/spack/opt/spack/linux-sles15-zen3/gcc-11.2.0/py-humanfriendly-8.2-fwxoic6njz7wkzysol5hyimvyvresthu/lib/python3.10/site-packages"
+prepend-path --delim ":" PYTHONPATH "/lustre/orion/gen150/world-shared/smartsim-2023/spack/opt/spack/linux-sles15-zen3/gcc-11.2.0/py-filelock-3.12.0-y6nhx7ytgbva47ljxl2e7fkhglaqapmv/lib/python3.10/site-packages"
+prepend-path --delim ":" PYTHONPATH "/lustre/orion/gen150/world-shared/smartsim-2023/spack/opt/spack/linux-sles15-zen3/gcc-11.2.0/py-protobuf-3.20.3-pt4gmnlmxlu2r7dmmj4mqb2tkx2gqkoa/lib/python3.10/site-packages"
+prepend-path --delim ":" PYTHONPATH "/lustre/orion/gen150/world-shared/smartsim-2023/spack/opt/spack/linux-sles15-zen3/gcc-11.2.0/py-setuptools-63.4.3-sfyegrwmnoobceynrw2jsevubqvchqvy/lib/python3.10/site-packages"
+prepend-path --delim ":" PYTHONPATH "/lustre/orion/gen150/world-shared/smartsim-2023/spack/opt/spack/linux-sles15-zen3/gcc-11.2.0/py-psutil-5.9.4-zcngvnbbubhgx3pivrpzetmxakvdnzke/lib/python3.10/site-packages"
+prepend-path --delim ":" PYTHONPATH "/lustre/orion/gen150/world-shared/smartsim-2023/spack/opt/spack/linux-sles15-zen3/gcc-11.2.0/py-redis-4.5.1-fjrhnbuba2urgmvzhdlibxtqyccu36w6/lib/python3.10/site-packages"
+prepend-path --delim ":" PYTHONPATH "/lustre/orion/gen150/world-shared/smartsim-2023/spack/opt/spack/linux-sles15-zen3/gcc-11.2.0/py-async-timeout-4.0.2-q5ozh7d6pbgwuj7xptsod2cx7ww5n44h/lib/python3.10/site-packages"
+prepend-path --delim ":" PYTHONPATH "/lustre/orion/gen150/world-shared/smartsim-2023/spack/opt/spack/linux-sles15-zen3/gcc-11.2.0/py-smartredis-0.4.1-eh4nliwstk6fhan5rxexnjnbwc4vufzf/lib/python3.10/site-packages"
+prepend-path --delim ":" PYTHONPATH "/lustre/orion/gen150/world-shared/smartsim-2023/spack/opt/spack/linux-sles15-zen3/gcc-11.2.0/py-numpy-1.24.3-lyu7lwwrxifmqjw66wjg222ts4tbdjnj/lib/python3.10/site-packages"
+prepend-path --delim ":" PYTHONPATH "/lustre/orion/gen150/world-shared/smartsim-2023/spack/opt/spack/linux-sles15-zen3/gcc-11.2.0/py-tabulate-0.8.9-t3szszww3fxrnw7wmtxeh6zjr7ew75wd/lib/python3.10/site-packages"
+prepend-path --delim ":" PYTHONPATH "/lustre/orion/gen150/world-shared/smartsim-2023/pytorch-1.11/lib/python3.10/site-packages"
+prepend-path --delim ":" PYTHONPATH "/lustre/orion/gen150/world-shared/smartsim-2023/spack/opt/spack/linux-sles15-zen3/gcc-11.2.0/py-tqdm-4.65.0-2mzhsxmedrw7borsrc24kmlnwzbpblql/lib/python3.10/site-packages"
 
 setenv MIOPEN_USER_DB_PATH /tmp
 setenv MIOPEN_DISABLE_CACHE 1
