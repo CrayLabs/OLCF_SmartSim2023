@@ -1,0 +1,28 @@
+def pre_process(uv : torch.Tensor):
+   uv = uv.float()
+   #normalize the input by 10
+   u = uv[0,:,:,:]*10.0
+   v = uv[1,:,:,:]*10.0
+   x = torch.stack((u,v))
+   x = x.transpose(0,3).transpose(1,3).transpose(2,3) # new the shape is (nk,2,ni,nj)
+   return x
+
+def post_process(out):
+   out = out.float()
+   # At this point, python out shape is (nk,4,ni,nj)
+   out = out.transpose(2,3).transpose(1,3).transpose(0,3)
+   dim = out.shape
+   Sxy = torch.zeros((6,dim[1],dim[2],dim[3])) # the shape is (6,ni,nj,nk)
+   epsilon_x = torch.normal(torch.zeros(dim[1],dim[2]),torch.ones(dim[1],dim[2]))
+   epsilon_x = torch.dstack([epsilon_x]*dim[3])
+   epsilon_y = torch.normal(torch.zeros(dim[1],dim[2]),torch.ones(dim[1],dim[2]))
+   epsilon_y = torch.dstack([epsilon_y]*dim[3])
+   scaling = 1e-7
+   # full output
+   Sxy[0,:,:,:] = (out[0,:,:,:] + epsilon_x/out[2,:,:,:])*scaling
+   Sxy[1,:,:,:] = (out[1,:,:,:] + epsilon_y/out[3,:,:,:])*scaling
+   Sxy[2,:,:,:] = out[0,:,:,:]*scaling
+   Sxy[3,:,:,:] = out[1,:,:,:]*scaling
+   Sxy[4,:,:,:] = 1.0/out[2,:,:,:]*scaling
+   Sxy[5,:,:,:] = 1.0/out[3,:,:,:]*scaling
+   return Sxy
