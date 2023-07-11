@@ -37,7 +37,7 @@ def main():
         # create and start an instance of the Orchestrator database
         # create and start an MOM6 experiment
         srun = exp.create_run_settings(
-                exe=f"{SCRATCH_ROOT}/inputs/MOM6_ocean_only",
+                exe='/lustre/orion/gen150/world-shared/smartsim-2023/workshop_materials/MOM6-examples/build/ocean_only/MOM6',
                 run_command='srun'
                 )
         srun.set_nodes(NUM_NODES)
