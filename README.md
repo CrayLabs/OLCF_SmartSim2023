@@ -23,7 +23,7 @@ numerical solver (the momentum component of the Navier-Stokes equations).
 1. Get a Slurm allocation
 
     ```
-    salloc -N 1 -t 01:00:00 --reservation=smartsim
+    salloc -N 1 -t 01:00:00 --reservation=smartsim -A YOUR_ALLOCATION_NAME_HERE
     ```
 
 1. Add the modulefile for SmartSim
