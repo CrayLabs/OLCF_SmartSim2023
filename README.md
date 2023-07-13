@@ -1,14 +1,18 @@
-# OLCF_Frontier_SmartSim_2023
-Workshop materials for the SmartSim workshop at OLCF Frontier
+# Introduction
 
-Quick Instructions
+This repository has all the scripts and inputs necessary to run a toy model
+of the ocean using MOM6. A machine-learning model is embedded into the
+numerical solver (the momentum component of the Navier-Stokes equations).
 
-1. Navigate to your directory on the Orion Lustre Filesystem
+# Quick Instructions
+
+1. Navigate to the workshop scratch space on the Lustre filesystem
 
     ```
-    export SCRATCH_ROOT=/lustre/orion/$PROJECT/scratch/$USER
+    export SCRATCH_ROOT=/lustre/orion/gen150/world-shared/smartsim-2023/workshop_scratch/$USER
     cd $SCRATCH_ROOT
     ```
+
 1. Clone down the repository
 
     ```
@@ -18,10 +22,10 @@ Quick Instructions
 1. Get a Slurm allocation
 
     ```
-    salloc -N 1 -q debug -t 00:30:00 -A GEN150_smartsim
+    salloc -N 2 -t 01:00:00 --reservation=smartsim
     ```
 
-1. Add the modulefile for SmartSim 
+1. Add the modulefile for SmartSim
 
     ```
     module use $SCRATCH_ROOT/OLCF_SmartSim2023/modulefiles
@@ -36,6 +40,6 @@ Quick Instructions
 1. Run the MOM6 example
 
     ```
-    cd $SCRATCH_ROOT/OLCF_SmartSim2023/smartsim_drivers
+    cd $SCRATCH_ROOT/OLCF_SmartSim2023/smartsim_drivers/double_gyre
     python call_MOM6.py
     ```
