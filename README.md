@@ -23,7 +23,7 @@ numerical solver (the momentum component of the Navier-Stokes equations).
 1. Get a Slurm allocation
 
     ```
-    salloc -N 2 -t 01:00:00 --reservation=smartsim
+    salloc -N 1 -t 01:00:00 --reservation=smartsim
     ```
 
 1. Add the modulefile for SmartSim
@@ -42,5 +42,6 @@ numerical solver (the momentum component of the Navier-Stokes equations).
 
     ```
     cd $SCRATCH_ROOT/OLCF_SmartSim2023/smartsim_drivers/double_gyre
+    ulimit -s unlimited # Necessary for MOM6
     python call_MOM6.py
     ```
