@@ -8,11 +8,10 @@ import time
 
 from smartsim import Experiment
 
-from helpers import parse_mom6_out, allowed_cpus
-
 _DISPLAY_NAMES = ['Total runtime','(CNN total inference)']
 NUM_NODES = 1
 ML_INPUTS = "./ml_inputs"
+
 
 logging.basicConfig(
     format='%(asctime)s %(message)s',
