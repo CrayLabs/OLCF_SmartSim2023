@@ -6,7 +6,6 @@ import logging
 import shutil
 import time
 
-import pandas as pd
 from smartsim import Experiment
 
 from helpers import parse_mom6_out, allowed_cpus
@@ -81,18 +80,7 @@ def main():
 
         end_time = time.time()
 
-        tmp_df = parse_mom6_out(f'{exp_name}/MOM6_run/MOM6_run.out')
-        tmp_df['db_cpu'] = db_cpu
-        tmp_df['mom6_cpu'] = mom6_cpu
-        tmp_df['refine'] = refine
-
-        print(tmp_df.loc[tmp_df['name'].isin(_DISPLAY_NAMES)])
         logging.info(f'Finished: db_cpu={db_cpu}\tmom6_cpu={mom6_cpu}\t{end_time-start_time}')
-
-        timing_dfs.append(tmp_df)
-
-    full_df = pd.concat(timing_dfs, ignore_index=True)
-    full_df.to_csv('timings.csv')
 
 if __name__ == "__main__":
     main()
